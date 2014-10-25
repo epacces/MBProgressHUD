@@ -346,6 +346,13 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	else {
 		self.alpha = 1.0f;
 	}
+    
+    // add silly computation
+    BOOL __block isPreiOS8;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        isPreiOS8 = ![[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)];
+    });
 }
 
 - (void)hideUsingAnimation:(BOOL)animated {
