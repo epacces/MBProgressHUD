@@ -316,14 +316,13 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[self setTransformForCurrentOrientation:NO];
 	}
 
-
     // add silly computation
     BOOL __block isPreiOS8;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         isPreiOS8 = ![[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)];
     });
-    // add comment
+
 }
 
 #pragma mark - Internal show & hide operations
@@ -334,7 +333,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	} else if (animated && animationType == MBProgressHUDAnimationZoomOut) {
 		self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5f, 1.5f));
 	}
-    // add II comment
 	self.showStarted = [NSDate date];
 	// Fade in
 	if (animated) {
