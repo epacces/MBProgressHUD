@@ -315,6 +315,13 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	if ([self shouldPerformOrientationTransform]) {
 		[self setTransformForCurrentOrientation:NO];
 	}
+    
+    // add silly computation
+    BOOL __block isPreiOS8;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        isPreiOS8 = ![[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)];
+    });
 }
 
 #pragma mark - Internal show & hide operations
